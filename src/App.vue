@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Menu, Container, Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake } from 'lucide-vue-next';
 import { ref, watch } from "vue";
+import Header from "@/components/Header/Header.vue";
+import WebComponentMenu from "@/components/Menu/Menu.vue";
 
 const isMenuOpen = ref<boolean>(false);
 const toogleMenu = () => {
@@ -15,58 +16,8 @@ watch(isMenuOpen, (value) => {
 
 <template>
   <div class="container">
-    <section class="header">
-      <p>
-        <Container /> Code Atlas
-      </p>
-      <Menu class="header-action" @click="toogleMenu" />
-    </section>
-    <aside class="sidebar" :class="{ open: isMenuOpen }">
-      <ul class="menu-design">
-        <li>
-          <a href="#">
-            <Home size="18" /> <span>Accueil</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Compass size="18" /> <span>Explorer</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <CircleUser size="18" /> <span>Mon compte</span>
-          </a>
-        </li>
-        <li class="skillmap">
-          <a href="#">
-            <Boxes size="18" /> <span>Skill Map</span>
-          </a>
-        </li>
-        <li class="login">
-          <a href="#" class="login-link">
-            <LogIn size="18" /> <span>Se connecter</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <Star size="18" /> <span>Favoris</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Handshake size="18" /> <span>Remerciements</span>
-          </a>
-        </li>
-        <li class="logout">
-          <a href="#" class="logout-link">
-            <LogOut size="18" /> <span>Se déconnecter</span>
-          </a>
-        </li>
-      </ul>
-    </aside>
-    <div class="backdrop" :class="{ active: isMenuOpen }" @click="toogleMenu"></div>
+    <Header />
+    <WebComponentMenu />
     <main class="main">
       <section class="hero-image"></section>
       <section class="card">
