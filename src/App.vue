@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Header from "@/components/Header/Header.vue";
 import WebComponentMenu from "@/components/Menu/Menu.vue";
-import Home from "@/components/Home/Home.vue";
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import Home from "@/components/Home/Home.vue";
     <Header />
     <WebComponentMenu />
     <main class="main">
-      <Home />
+      <router-view />
     </main>
     <footer class="footer">
       <p>Made by Gourouvin Laurent</p>
