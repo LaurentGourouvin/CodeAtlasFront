@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Menu, Container, Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake } from 'lucide-vue-next';
+import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake } from 'lucide-vue-next';
 import { useUIStore } from '@/stores/ui';
 const ui = useUIStore();
 </script>

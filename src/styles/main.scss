@@ -1,5 +1,6 @@
 @use './reset.scss';
 @use './font.scss';
+@use './menu.scss';
 
 html,
 body {
@@ -109,65 +110,7 @@ body {
   justify-content: center;
 }
 
-.sidebar {
-  grid-area: sidebar;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  max-width: 300px;
-  background-color: #ffffff;
-  padding: 2rem;
-  z-index: 1000;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 
-  // 🔒 état caché par défaut (mobile)
-  opacity: 0;
-  transform: translateX(-100%);
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
-
-  // ✅ état visible
-  &.open {
-    opacity: 1;
-    transform: translateX(0);
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  // 💻 desktop : toujours visible
-  @media (min-width: 768px) {
-    position: static;
-    height: auto;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    box-shadow: none;
-  }
-}
-
-.backdrop {
-  position: fixed;
-  inset: 0; // équivalent de top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0, 0, 0, 0.1); // couleur d’ombre
-  z-index: 999; // juste sous la sidebar
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-
-  &.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  // En desktop : désactivé
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
 
 .hero-image {
   width: 100%;
@@ -194,76 +137,6 @@ body {
   background-image: url('@/assets/images/Pricing-plans-rafiki.svg');
 }
 
-// .card {
-//   position: relative;
-//   background-color: #ffffff;
-//   border-radius: 12px;
-//   padding: 1.5rem;
-//   margin: 1rem .5rem;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-//   font-family: 'Plus Jakarta Sans', sans-serif;
-//   color: #333;
-//   text-align: justify;
-//   z-index: 1;
-
-//   footer.card-footer {
-//     position: relative;
-//     height: 100px;
-//     margin: 2rem -1.5rem -1.5rem;
-//     border-bottom-left-radius: 12px;
-//     border-bottom-right-radius: 12px;
-//     overflow: hidden;
-
-
-//     @media (min-width: 768px) {
-//       height: 140px; // ou plus selon le rendu du SVG
-//     }
-
-//     .card-footer-wave {
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       width: 100%;
-//       height: 100%;
-//       background: url('@/assets/images/layered-waves-haikei.svg') no-repeat center bottom;
-//       background-size: cover;
-//       opacity: 1;
-//       pointer-events: none;
-//     }
-//   }
-
-//   h2 {
-//     font-size: 1.5rem;
-//     font-weight: 600;
-//     margin-bottom: 0.75rem;
-//     color: #ffd60a;
-//   }
-
-//   p {
-//     font-size: 1rem;
-//     line-height: 1.6;
-//     color: #4f4f4f;
-//   }
-
-//   b {
-//     font-weight: 600;
-//   }
-
-//   @media (min-width: 768px) {
-//     // max-width: 600px;
-//     max-width: 35%;
-//     margin: 2rem auto;
-
-//     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-//     &:hover {
-//       transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
-//       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-//       border: 1px solid #ffd60a;
-//     }
-//   }
-// }
-
 .sign {
   display: block;
   margin-top: 1.5rem;
@@ -276,111 +149,5 @@ body {
   letter-spacing: 0.5px;
 }
 
-.sidebar .menu-design {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 
-.sidebar .menu-design li a {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #555;
-  background-color: transparent;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  font-family: 'Plus Jakarta Sans', sans-serif;
 
-  svg {
-    flex-shrink: 0;
-    color: #999;
-    transition: color 0.2s ease;
-  }
-}
-
-.sidebar .menu-design li a:hover {
-  background-color: #f2f2f7;
-  color: #f5c518;
-  transform: translateX(2px);
-
-  svg {
-    color: #f5c518;
-  }
-}
-
-// ✅ Bouton "Se connecter" en vert
-.menu-design .login {
-  color: #2e7d32;
-  font-weight: 600;
-
-  .login-link {
-    color: #2e7d32;
-    font-weight: 600;
-
-    svg {
-      color: #2e7d32;
-    }
-
-    &:hover {
-      background-color: #fdecea;
-    }
-  }
-}
-
-// ✅ Bouton "Se déconnecter" rouge tout en bas
-.menu-design .logout {
-  margin-top: auto;
-
-  .logout-link {
-    color: #c62828;
-    font-weight: 600;
-
-    svg {
-      color: #c62828;
-    }
-
-    &:hover {
-      background-color: #fdecea;
-    }
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.04);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.menu-design .skillmap a {
-  animation: pulse 0.6s ease-out infinite;
-}
-
-.menu-design .skillmap a {
-  background-color: #fff8e1; // jaune pâle
-  color: #d6a100; // jaune emoji foncé
-  font-weight: 700;
-  border-left: 4px solid #f5c518;
-
-  svg {
-    color: #d6a100;
-  }
-
-  &:hover {
-    background-color: #fff3c4;
-  }
-}
