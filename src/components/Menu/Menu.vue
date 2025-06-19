@@ -7,7 +7,7 @@ const authentication = useAuthStore();
 </script>
 <template>
     <aside class="sidebar" :class="{ open: ui.isMenuOpen }">
-        <article class="sidebar_profil" v-if="authentication.getIsAuthenticated">
+        <article class="sidebar_profil" v-if="authentication.isAuthenticated">
             <div class="sidebar_profil--avatar">
                 <CircleUserRound :size="18" />
             </div>
@@ -22,7 +22,7 @@ const authentication = useAuthStore();
                     <Home :size=18 /> <span>Accueil</span>
                 </a>
             </li>
-            <li class="login" v-if="!authentication.getIsAuthenticated" @click="authentication.setIsAuthenticated(true)" >
+            <li class="login" v-if="!authentication.isAuthenticated" @click="authentication.setIsAuthenticated(true)" >
                 <a href="#" class="login-link">
                     <LogIn :size=18 /> <span>Se connecter</span>
                 </a>
@@ -32,12 +32,12 @@ const authentication = useAuthStore();
                     <Compass :size=18 /> <span>Explorer</span>
                 </a>
             </li>
-            <li v-if="authentication.getIsAuthenticated">
+            <li v-if="authentication.isAuthenticated">
                 <a href="#">
                     <CircleUser :size="18" /> <span>Mon compte</span>
                 </a>
             </li>
-            <li class="skillmap" v-if="authentication.getIsAuthenticated">
+            <li class="skillmap" v-if="authentication.isAuthenticated">
                 <a href="#">
                     <Boxes :size=18 /> <span>Skill Map</span>
                 </a>
@@ -57,7 +57,7 @@ const authentication = useAuthStore();
                     <Handshake :size=18 /> <span>Remerciements</span>
                 </a>
             </li>
-            <li class="logout" v-if="authentication.getIsAuthenticated" @click="authentication.setIsAuthenticated(false)">
+            <li class="logout" v-if="authentication.isAuthenticated" @click="authentication.setIsAuthenticated(false)">
                 <a href="#" class="logout-link">
                     <LogOut :size=18 /> <span>Se déconnecter</span>
                 </a>
