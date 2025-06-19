@@ -37,3 +37,9 @@ npm run build
 ```sh
 npm run test:unit
 ```
+
+### Resources
+
+https://storyset.com/search
+https://app.haikei.app/
+https://lucide.dev/
