@@ -2,8 +2,11 @@
 import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake, Newspaper, CircleUserRound } from 'lucide-vue-next';
 import { useUIStore } from '@/stores/ui';
 import { useAuthStore } from '@/stores/auth';
+import { useScrollMenuLock } from '@/composables/useScrollMenuLock';
 const ui = useUIStore();
 const authentication = useAuthStore();
+
+useScrollMenuLock(() => ui.isMenuOpen);
 </script>
 <template>
     <aside class="sidebar" :class="{ open: ui.isMenuOpen }">
