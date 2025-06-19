@@ -57,7 +57,7 @@ useScrollMenuLock(() => ui.isMenuOpen);
             </li>
             <li>
                 <a href="#">
-                    <Handshake :size=18 /> <span>Remerciements</span>
+                    <Handshake :size=18 /> <span>Ressources</span>
                 </a>
             </li>
             <li class="logout" v-if="authentication.isAuthenticated" @click="authentication.setIsAuthenticated(false)">
