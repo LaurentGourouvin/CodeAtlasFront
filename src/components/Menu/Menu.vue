@@ -50,7 +50,7 @@ useScrollMenuLock(() => ui.isMenuOpen);
                     <Newspaper :size=18 /> <span>Blog</span>
                 </a>
             </li>
-            <li>
+            <li v-if="authentication.isAuthenticated">
                 <a href="#">
                     <Star :size=18 /> <span>Favoris</span>
                 </a>
