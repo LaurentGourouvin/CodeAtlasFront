@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake } from 'lucide-vue-next';
+import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake, Newspaper, CircleUserRound } from 'lucide-vue-next';
 import { useUIStore } from '@/stores/ui';
 const ui = useUIStore();
 </script>
 <template>
     <aside class="sidebar" :class="{ open: ui.isMenuOpen }">
+        <article class="sidebar_profil">
+            <div class="sidebar_profil--avatar">
+                <CircleUserRound :size="18" />
+            </div>
+            <div class="sidebar_profil--info">
+                <p class="sidebar_profil--name">Laurent Gourouvin</p>
+            </div>
+        </article>
+
         <ul class="menu-design">
             <li>
                 <a href="#">
@@ -24,6 +33,11 @@ const ui = useUIStore();
             <li class="skillmap">
                 <a href="#">
                     <Boxes :size=18 /> <span>Skill Map</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <Newspaper :size=18 /> <span>Blog</span>
                 </a>
             </li>
             <li class="login">

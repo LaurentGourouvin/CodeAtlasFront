@@ -50,14 +50,12 @@
     z-index: 1000;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 
-    // 🔒 état caché par défaut (mobile)
     opacity: 0;
     transform: translateX(-100%);
     visibility: hidden;
     pointer-events: none;
     transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
 
-    // ✅ état visible
     &.open {
         opacity: 1;
         transform: translateX(0);
@@ -65,7 +63,40 @@
         pointer-events: auto;
     }
 
-    // 💻 desktop : toujours visible
+    &_profil {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background-color: #f9f9fb;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            width: 100%;
+
+            &--info {
+                display: flex;
+                flex-direction: column;
+                gap: .25rem;
+                max-width: 140px;
+
+            }
+
+            &--name {
+                font-weight: 600;
+                font-size: 1rem;
+                color: #ffd60a;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+        }
+
     @media (min-width: 768px) {
         position: static;
         height: auto;
@@ -79,9 +110,9 @@
 
 .backdrop {
     position: fixed;
-    inset: 0; // équivalent de top: 0; right: 0; bottom: 0; left: 0;
-    background-color: rgba(0, 0, 0, 0.1); // couleur d’ombre
-    z-index: 999; // juste sous la sidebar
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 999;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -91,7 +122,6 @@
         pointer-events: auto;
     }
 
-    // En desktop : désactivé
     @media (min-width: 768px) {
         display: none;
     }
@@ -151,8 +181,8 @@
 }
 
 .menu-design .skillmap a {
-    background-color: #fff8e1; // jaune pâle
-    color: #d6a100; // jaune emoji foncé
+    background-color: #fff8e1;
+    color: #d6a100;
     font-weight: 700;
     border-left: 4px solid #f5c518;
 
