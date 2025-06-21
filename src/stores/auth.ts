@@ -1,13 +1,17 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
+import keycloak from "@/plugins/keycloak/keycloak";
 
 export const useAuthStore = defineStore('auth', () => {
-    const authenticate = ref<boolean>(false);
-    const isAuthenticated = computed<boolean>(() => authenticate.value);
-    const setIsAuthenticated = (payload: boolean) => {
-        authenticate.value = payload;
+    const isAuthenticated = computed<boolean | undefined>(() => keycloak.authenticated);
+
+    const login = async () => {
+        await keycloak.login();
+    }
+    const logout = async () => {
+        await keycloak.logout();
     }
     return {
-        isAuthenticated, setIsAuthenticated
+        isAuthenticated, login, logout
     }
 })

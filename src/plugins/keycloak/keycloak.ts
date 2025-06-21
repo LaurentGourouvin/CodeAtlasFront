@@ -20,3 +20,5 @@ export const initKeycloak = async () => {
     return null
   }
 }
+
+export default keycloak

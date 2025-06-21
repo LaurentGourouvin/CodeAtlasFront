@@ -3,15 +3,10 @@ import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake, Newsp
 import { useUIStore } from '@/stores/ui';
 import { useAuthStore } from '@/stores/auth';
 import { useScrollMenuLock } from '@/composables/useScrollMenuLock';
-import { useKeycloak } from '@/composables/useKeycloak';
 const ui = useUIStore();
 const authentication = useAuthStore();
 
 useScrollMenuLock(() => ui.isMenuOpen);
-const keycloak = useKeycloak();
-const login = () => {
-    keycloak.login();
-}
 </script>
 <template>
     <aside class="sidebar" :class="{ open: ui.isMenuOpen }">
@@ -20,7 +15,7 @@ const login = () => {
                 <CircleUserRound :size="18" />
             </div>
             <div class="sidebar_profil--info">
-                <p class="sidebar_profil--name">Laurent Gourouvin</p>
+                <p class="sidebar_profil--name"> {{ 'Utilisateur' }}</p>
             </div>
         </article>
 
@@ -30,7 +25,7 @@ const login = () => {
                     <Home :size=18 /> <span>Accueil</span>
                 </a>
             </li>
-            <li class="login" v-if="!authentication.isAuthenticated" @click="login()">
+            <li class="login" v-if="!authentication.isAuthenticated" @click="authentication.login()">
                 <a href="#" class="login-link">
                     <LogIn :size=18 /> <span>Se connecter</span>
                 </a>
@@ -66,7 +61,7 @@ const login = () => {
                     <span>Ressources</span>
                 </router-link>
             </li>
-            <li class="logout" v-if="authentication.isAuthenticated" @click="authentication.setIsAuthenticated(false)">
+            <li class="logout" v-if="authentication.isAuthenticated" @click="authentication.logout()">
                 <a href="#" class="logout-link">
                     <LogOut :size=18 /> <span>Se déconnecter</span>
                 </a>
