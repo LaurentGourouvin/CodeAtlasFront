@@ -3,9 +3,11 @@ import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake, Newsp
 import { useUIStore } from '@/stores/ui';
 import { useAuthStore } from '@/stores/auth';
 import { useScrollMenuLock } from '@/composables/useScrollMenuLock';
+import { useUserStore } from '@/stores/user';
 const ui = useUIStore();
 const authentication = useAuthStore();
-
+const user = useUserStore();
+user.name();
 useScrollMenuLock(() => ui.isMenuOpen);
 </script>
 <template>
@@ -15,7 +17,7 @@ useScrollMenuLock(() => ui.isMenuOpen);
                 <CircleUserRound :size="18" />
             </div>
             <div class="sidebar_profil--info">
-                <p class="sidebar_profil--name"> {{ 'Utilisateur' }}</p>
+                <p class="sidebar_profil--name"> {{ user.name() }}</p>
             </div>
         </article>
 

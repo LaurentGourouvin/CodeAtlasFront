@@ -4,7 +4,6 @@ import keycloak from "@/plugins/keycloak/keycloak";
 
 export const useAuthStore = defineStore('auth', () => {
     const isAuthenticated = computed<boolean | undefined>(() => keycloak.authenticated);
-
     const login = async () => {
         await keycloak.login();
     }
