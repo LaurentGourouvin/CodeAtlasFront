@@ -3,10 +3,15 @@ import { Compass, Home, Star, CircleUser, LogOut, LogIn, Boxes, Handshake, Newsp
 import { useUIStore } from '@/stores/ui';
 import { useAuthStore } from '@/stores/auth';
 import { useScrollMenuLock } from '@/composables/useScrollMenuLock';
+import { useKeycloak } from '@/composables/useKeycloak';
 const ui = useUIStore();
 const authentication = useAuthStore();
 
 useScrollMenuLock(() => ui.isMenuOpen);
+const keycloak = useKeycloak();
+const login = () => {
+    keycloak.login();
+}
 </script>
 <template>
     <aside class="sidebar" :class="{ open: ui.isMenuOpen }">
@@ -25,7 +30,7 @@ useScrollMenuLock(() => ui.isMenuOpen);
                     <Home :size=18 /> <span>Accueil</span>
                 </a>
             </li>
-            <li class="login" v-if="!authentication.isAuthenticated" @click="authentication.setIsAuthenticated(true)">
+            <li class="login" v-if="!authentication.isAuthenticated" @click="login()">
                 <a href="#" class="login-link">
                     <LogIn :size=18 /> <span>Se connecter</span>
                 </a>
