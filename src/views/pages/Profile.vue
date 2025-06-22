@@ -12,6 +12,16 @@ const authStore = useAuthStore();
         <CircleUser :size="18" />
         Mon Compte
     </h2>
+
+    <section class="user-summary">
+        <h3>Rôles</h3>
+        <article class="roles">
+            <span v-for="role in userStore.roles" class="user-role">
+                {{ role }}
+            </span>
+        </article>
+    </section>
+
     <div class="user-summary">
         <p>Bonjour, <b class="name">{{ userStore.name }}</b></p>
         <p>Voici un résumé de vos informations :</p>
@@ -62,6 +72,14 @@ h2 {
     }
 }
 
+h3 {
+    color: #ffd60a;
+}
+
+.roles {
+    display: flex;
+}
+
 .user-summary {
     max-width: 500px;
     padding: 1.5rem;
@@ -70,6 +88,7 @@ h2 {
     border-radius: 8px;
     font-family: sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
 
     .name {
         color: #ffd60a;
@@ -99,6 +118,17 @@ h2 {
         margin: 1.5rem auto;
         max-width: none;
         width: 80%;
+    }
+
+    .user-role {
+        font-size: .8rem;
+        padding: .5rem;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        margin: .5rem;
+        display: block;
+        width: fit-content;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
 }
 
