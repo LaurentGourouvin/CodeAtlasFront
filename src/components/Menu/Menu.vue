@@ -22,9 +22,10 @@ useScrollMenuLock(() => ui.isMenuOpen);
 
         <ul class="menu-design">
             <li>
-                <a href="#">
-                    <Home :size=18 /> <span>Accueil</span>
-                </a>
+                <router-link to="/" @click="ui.closeMenu()">
+                    <Home :size="18" />
+                    <span>Accueil</span>
+                </router-link>
             </li>
             <li class="login" v-if="!authentication.isAuthenticated" @click="authentication.login()">
                 <a href="#" class="login-link">
@@ -53,7 +54,7 @@ useScrollMenuLock(() => ui.isMenuOpen);
                 </a>
             </li>
             <li>
-                <router-link to="/ressources"  @click="ui.closeMenu()">
+                <router-link to="/ressources" @click="ui.closeMenu()">
                     <Handshake :size="18" />
                     <span>Ressources</span>
                 </router-link>
