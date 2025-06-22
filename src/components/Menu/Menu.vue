@@ -37,9 +37,10 @@ useScrollMenuLock(() => ui.isMenuOpen);
                 </a>
             </li>
             <li v-if="authentication.isAuthenticated">
-                <a href="#">
-                    <CircleUser :size="18" /> <span>Mon compte</span>
-                </a>
+                <router-link to="/profile" @click="ui.closeMenu()">
+                    <CircleUser :size="18" />
+                    <span>Mon compte</span>
+                </router-link>
             </li>
             <li class="skillmap" v-if="authentication.isAuthenticated">
                 <a href="#">
@@ -51,13 +52,8 @@ useScrollMenuLock(() => ui.isMenuOpen);
                     <Newspaper :size=18 /> <span>Blog</span>
                 </a>
             </li>
-            <li v-if="authentication.isAuthenticated">
-                <a href="#">
-                    <Star :size=18 /> <span>Favoris</span>
-                </a>
-            </li>
             <li>
-                <router-link to="/ressources">
+                <router-link to="/ressources"  @click="ui.closeMenu()">
                     <Handshake :size="18" />
                     <span>Ressources</span>
                 </router-link>
