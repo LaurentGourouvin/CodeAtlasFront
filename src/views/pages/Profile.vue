@@ -3,9 +3,11 @@ import { useAuthStore } from '@/stores/auth';
 import { useUserStore } from '@/stores/user';
 import type { KeycloakTokenParsed } from 'keycloak-js';
 import { Star, CircleUser, LogOut, UserX, UserPen, LifeBuoy } from 'lucide-vue-next';
+import { useToast } from 'vue-toastification';
 const userStore = useUserStore();
 const user: KeycloakTokenParsed | null = userStore.userInfo;
 const authStore = useAuthStore();
+const toast = useToast();
 </script>
 <template>
     <h2>
@@ -35,17 +37,17 @@ const authStore = useAuthStore();
     </div>
 
     <div class="user-action">
-        <button>
+        <button @click="toast.warning('Non disponible pour le moment.')">
             <UserPen :size=18 />Mettre à jour des informations
         </button>
-        <button>
+        <button @click="toast.warning('Non disponible pour le moment.')">
             <LifeBuoy :size=18 />
             Contacter l'équipe
         </button>
         <button @click="authStore.logout()">
             <LogOut :size=18 /> Se déconnecter
         </button>
-        <button>
+        <button @click="toast.warning('Non disponible pour le moment.')">
             <UserX :size=18 />Cloturer le compte
         </button>
     </div>

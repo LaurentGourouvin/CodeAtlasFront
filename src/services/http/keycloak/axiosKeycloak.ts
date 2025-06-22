@@ -1,4 +1,4 @@
-import defaultAxiosInstance from "@/plugins/keycloak/axios";
+import defaultAxiosInstance from "@/plugins/axios";
 
 export const axiosKeycloakService = {
     disableAccount(userId: string) {
