@@ -2,7 +2,7 @@
 import { useAuthStore } from '@/stores/auth';
 import { useUserStore } from '@/stores/user';
 import type { KeycloakTokenParsed } from 'keycloak-js';
-import { Star, CircleUser, LogOut, UserX, UserPen } from 'lucide-vue-next';
+import { Star, CircleUser, LogOut, UserX, UserPen, LifeBuoy } from 'lucide-vue-next';
 const userStore = useUserStore();
 const user: KeycloakTokenParsed | null = userStore.userInfo;
 const authStore = useAuthStore();
@@ -37,6 +37,10 @@ const authStore = useAuthStore();
     <div class="user-action">
         <button>
             <UserPen :size=18 />Mettre à jour des informations
+        </button>
+        <button>
+            <LifeBuoy :size=18 />
+            Contacter l'équipe
         </button>
         <button @click="authStore.logout()">
             <LogOut :size=18 /> Se déconnecter
@@ -168,6 +172,15 @@ h3 {
         }
 
         &:nth-child(2) {
+            background-color: #3b82f6;
+            color: white;
+
+            &:hover {
+                background-color: #2563eb;
+            }
+        }
+
+        &:nth-child(3) {
             background-color: #f97316;
             color: white;
 
