@@ -4,10 +4,26 @@ import { useUserStore } from '@/stores/user';
 import type { KeycloakTokenParsed } from 'keycloak-js';
 import { Star, CircleUser, LogOut, UserX, UserPen, LifeBuoy } from 'lucide-vue-next';
 import { useToast } from 'vue-toastification';
+import { axiosKeycloakService } from '@/services/http/keycloak/axiosKeycloak';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse } from '@/types/ErrorResponse';
+
 const userStore = useUserStore();
 const user: KeycloakTokenParsed | null = userStore.userInfo;
 const authStore = useAuthStore();
 const toast = useToast();
+const keyCloakService = axiosKeycloakService;
+
+const disableAccount = async () => {
+    try {
+        await keyCloakService.disableAccount(user?.sub);
+        toast.success('Compte cloturé.')
+        setTimeout(authStore.logout, 3000)
+    } catch (error: any) {
+        const err = error as AxiosError<ErrorResponse>;
+        toast.error(err.response?.data?.message || "Something went wrong.");
+    }
+}
 </script>
 <template>
     <h2>
@@ -47,7 +63,7 @@ const toast = useToast();
         <button @click="authStore.logout()">
             <LogOut :size=18 /> Se déconnecter
         </button>
-        <button @click="toast.warning('Non disponible pour le moment.')">
+        <button @click="disableAccount()">
             <UserX :size=18 />Cloturer le compte
         </button>
     </div>
