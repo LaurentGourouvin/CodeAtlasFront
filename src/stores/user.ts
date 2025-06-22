@@ -5,7 +5,6 @@ import type { KeycloakTokenParsed } from "keycloak-js";
 
 export const useUserStore = defineStore('user', () => {
     const userInfo = computed((): KeycloakTokenParsed|null => keycloak?.tokenParsed || null)
-    console.log(userInfo.value)
     const name = computed<string>(() => {
         return userInfo.value?.name ?? 'Utilisateur'
     })

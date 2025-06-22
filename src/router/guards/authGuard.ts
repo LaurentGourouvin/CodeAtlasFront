@@ -8,7 +8,7 @@ export const authGuard: NavigationGuard = (to: RouteLocationNormalized, from: Ro
         if (store.isAuthenticated) {
             next();
         } else {
-            next({ name: 'login' })
+            next({ name: '' })
         }
     } else {
         next();
