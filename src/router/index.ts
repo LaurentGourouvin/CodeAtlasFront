@@ -21,6 +21,31 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
       }
+    },
+    {
+      path: "/explorer",
+      name: "explorer",
+      component: () => import('@/views/pages/UnderConstruction.vue')
+    },
+    {
+      path: "/skill-map",
+      name: 'skillmap',
+      component: () => import('@/views/pages/UnderConstruction.vue')
+    },
+        {
+      path: "/blog",
+      name: 'blog',
+      component: () => import('@/views/pages/UnderConstruction.vue')
+    },
+    {
+      path: "/under-construction",
+      name: "UnderConstruction",
+      component: () => import('@/views/pages/UnderConstruction.vue')
+    },
+    {
+      path: "/NotFound",
+      name: "NotFound",
+      component: () => import("@/views/pages/NotFound.vue")
     }
   ],
 })
